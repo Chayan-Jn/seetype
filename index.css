@@ -1,0 +1,40 @@
+*{
+    padding: 0;
+    margin:0;
+}
+
+.whole{
+    background-color: #2e2d2d;
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.text{
+
+    height: 11rem;
+    width: 80vw;
+    font-size: 3rem;
+    color: #5e5d5d ;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    text-wrap: nowrap;
+    text-align: left;
+    caret-color: rgb(194, 171, 40);
+    padding-left: 2px;
+}
+
+.correct{
+    color: whitesmoke;
+}
+.incorrect{
+    color:crimson
+}
+
+.default{
+    color: #5e5d5d ;
+}
+
