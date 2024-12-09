@@ -4,8 +4,9 @@ let line1 = document.querySelector('.line1');
 let line2 = document.querySelector('.line2');
 let line3 = document.querySelector('.line3');
 let inputField = document.querySelector('.input');
+let caret = document.querySelector('.caret');
 
-let text1 = "";
+let text1 = "";  
 let text2 = "";
 let text3 = "";
 const maxchar = 75;
@@ -51,34 +52,42 @@ function getNewText(){
 }
 
 
+// using this to mark the next letter to be typed of different color
+let iterator = 0
+
 
 inputField.addEventListener('input', (e) => {
     const typedText = e.target.value;
     const targetText = lines[currentLineIndex];
     let updatedText = "";
 
-
-
     for (let i = 0; i < targetText.length; i++) {
         const typedLetter = typedText[i];
         const correctLetter = targetText[i];
-
 
         if (i < typedText.length) {
             if (typedLetter === correctLetter) {
                 updatedText += `<span class="correct">${typedLetter}</span>`;
             } else {
                 updatedText += `<span class="incorrect">${correctLetter}</span>`;
-                
             }
         } else {
-            updatedText += `<span class="default">${correctLetter}</span>`;
+            if(i==iterator){
+                updatedText+= `<span class=next-letter>${correctLetter}</span>`
+            }
+            else{
+                updatedText += `<span class="default">${correctLetter}</span>`;
+            }
+
             
         }
     }
     lineElements[currentLineIndex].innerHTML = updatedText;
+
+
     if (typedText.length === targetText.length) {
 
+        iterator = 0
         TotalTypedTextLength += typedText.length;
         TotalCorrectTextLength += targetText.length;
         currentLineIndex = (currentLineIndex + 1) % 2;
@@ -102,8 +111,22 @@ inputField.addEventListener('input', (e) => {
         }
         inputField.value = "";  
 
-
     }
-}
+});
 
-);
+inputField.addEventListener('blur', () => {
+    // Re-focus only when the input loses focus
+    setTimeout(() => inputField.focus(), 0);
+  });
+
+document.addEventListener('keydown',(e)=>{
+    if(e.key == 'Backspace'){
+        if(iterator>0) iterator--;
+    }
+    else{
+        iterator++;
+    }
+})
+
+
+  

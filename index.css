@@ -8,8 +8,11 @@
     height: 100vh;
     width: 100vw;
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
+    text-align: center;
+
 }
 
 .text{
@@ -22,9 +25,10 @@
     display: flex;
     flex-direction: column;
     text-wrap: nowrap;
-    text-align: left;
+    text-align: center;
     caret-color: rgb(194, 171, 40);
     padding-left: 2px;
+    position: relative;
 }
 
 .correct{
@@ -38,3 +42,17 @@
     color: #5e5d5d ;
 }
 
+.input{
+    opacity: 0;
+}
+.refresh{
+    font-size: 3rem;
+    font-weight: bolder;
+    background: wheat;
+    color: crimson;
+    box-shadow: 1px 1px 1px white;
+}
+
+.next-letter {
+    color: darkturquoise;
+}
