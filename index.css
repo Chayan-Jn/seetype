@@ -53,6 +53,39 @@
     box-shadow: 1px 1px 1px white;
 }
 
+.refresh:hover{
+    background-color: crimson;
+    color:  white;
+}
+
 .next-letter {
     color: darkturquoise;
+}
+
+.nav{
+    width: 100vw;
+    height: 10vh;
+    position: absolute;
+    top:0;
+    background-color: rgb(220, 208, 243);
+    display: flex;
+    align-items: center;
+}
+
+.nav > div{
+    height: 4rem;
+    width: 4rem;
+    margin-left: 2rem;
+    border-radius: 50%;
+    box-shadow: 2px 2px 2px black;
+}
+
+.phase1{
+    background-color: rgb(46, 46, 80);
+}
+.phase2{
+    background-color: rgb(20, 127, 20);
+}
+.phase3{
+    background-color: crimson;
 }

@@ -4,47 +4,49 @@ let line1 = document.querySelector('.line1');
 let line2 = document.querySelector('.line2');
 let line3 = document.querySelector('.line3');
 let inputField = document.querySelector('.input');
-let caret = document.querySelector('.caret');
+let refreshButton = document.querySelector('.refresh')
+const phase1 = document.querySelector('.phase1')
 
-let text1 = "";  
-let text2 = "";
-let text3 = "";
+
+let lines = []
+let lineElements = []
 const maxchar = 75;
 
-// Generate lines
-for(let i = 0; i < 13; i++){     
-    let num = Math.floor(Math.random() * n);
-    let w1 = uniqueWords[num] + " ";
-    let w2 = uniqueWords[(num+1) % n] + " ";
-    let w3 = uniqueWords[(num+2) % n] + " ";
+
+function InitializeText(){
+    let text1 = "";  
+    let text2 = "";
+    let text3 = "";
+
+    // Generate lines
+    for(let i = 0; i < 13; i++){     
+        let num = Math.floor(Math.random() * n);
+        let w1 = uniqueWords[num] + " ";
+        let w2 = uniqueWords[(num+1) % n] + " ";
+        let w3 = uniqueWords[(num+2) % n] + " ";
+        
+        if((text1.length + w1.length) < maxchar) text1 += w1;     
+        if((text2.length + w2.length) < maxchar) text2 += w2;        
+        if((text3.length + w3.length) < maxchar) text3 += w3;      
+    } 
+
+
+    // Set line texts
+    line1.innerText = text1;
+    line2.innerText = text2;
+    line3.innerText = text3;   
+    inputField.focus(); 
+
+    lines = [text1, text2, text3];
+    lineElements = [line1, line2, line3];
     
-    if((text1.length + w1.length) < maxchar) text1 += w1;     
-    if((text2.length + w2.length) < maxchar) text2 += w2;        
-    if((text3.length + w3.length) < maxchar) text3 += w3;      
-} 
-
-// Set line texts
-line1.innerText = text1;
-line2.innerText = text2;
-line3.innerText = text3;   
-inputField.focus();  
-
-// Game state variables
-let lines = [text1, text2, text3];
-let lineElements = [line1, line2, line3];
-let currentLineIndex = 0;
-let TotalCorrectTextLength = 0;
-let TotalTypedTextLength = 0;
-let TotalTextLength = 0;
-let onloop = false
-
+}
 
 function getNewText(){
     let newtext = ""
     for(let i=0;i<13;i++){
         let num = Math.floor(Math.random() * n);
         let w1 = uniqueWords[num] + " ";
-
         if((newtext.length + w1.length) < maxchar) newtext += w1; 
         else break;
     }
@@ -52,10 +54,17 @@ function getNewText(){
 }
 
 
-// using this to mark the next letter to be typed of different color
-let iterator = 0
+InitializeText()
+let currentLineIndex = 0;
+let TotalCorrectTextLength = 0;
+let TotalTypedTextLength = 0;
+let TotalTextLength = 0;
+let onloop = false
+let iterator = 0 // using this to mark the next letter to be typed of different color
 
 
+
+// Event Listners
 inputField.addEventListener('input', (e) => {
     const typedText = e.target.value;
     const targetText = lines[currentLineIndex];
@@ -77,16 +86,12 @@ inputField.addEventListener('input', (e) => {
             }
             else{
                 updatedText += `<span class="default">${correctLetter}</span>`;
-            }
-
-            
+            }        
         }
     }
     lineElements[currentLineIndex].innerHTML = updatedText;
 
-
     if (typedText.length === targetText.length) {
-
         iterator = 0
         TotalTypedTextLength += typedText.length;
         TotalCorrectTextLength += targetText.length;
@@ -94,10 +99,10 @@ inputField.addEventListener('input', (e) => {
         inputField.value = "";
         if (currentLineIndex === 0) {
             if(onloop!=true){
-                TotalTextLength += text1.length + text2.length 
+                TotalTextLength += lines[0].length + lines[1].length 
                 onloop=true
             }
-            else TotalTextLength += text2.length
+            else TotalTextLength += lines[1].length
 
             // removing first line and adding a new
             lines.shift(); 
@@ -114,6 +119,8 @@ inputField.addEventListener('input', (e) => {
     }
 });
 
+
+
 inputField.addEventListener('blur', () => {
     // Re-focus only when the input loses focus
     setTimeout(() => inputField.focus(), 0);
@@ -123,10 +130,23 @@ document.addEventListener('keydown',(e)=>{
     if(e.key == 'Backspace'){
         if(iterator>0) iterator--;
     }
-    else{
-        iterator++;
-    }
+    else iterator++;
+    
 })
+
+refreshButton.addEventListener('click',(e)=>{
+    iterator = 0;
+    InitializeText();
+    inputField.value = ""
+    currentLineIndex = 0
+
+    TotalCorrectTextLength = 0;
+    TotalTypedTextLength = 0;
+    TotalTextLength = 0;
+    onloop = false;
+
+})
+
 
 
   
