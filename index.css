@@ -12,7 +12,10 @@
     justify-content: center;
     align-items: center;
     text-align: center;
+}
 
+.blue-whole{
+    background:linear-gradient(to right,black,#001)
 }
 
 .text{
@@ -26,14 +29,22 @@
     flex-direction: column;
     text-wrap: nowrap;
     text-align: center;
-    caret-color: rgb(194, 171, 40);
     padding-left: 2px;
     position: relative;
+}
+
+.blue-text{
+    background:linear-gradient(to right,rgb(245, 245, 67),black);
+    background-clip: text;
+    color:transparent;
+    text-shadow: 0.1px 0px 0.1px rgb(196, 196, 79);
+
 }
 
 .correct{
     color: whitesmoke;
 }
+
 .incorrect{
     color:crimson
 }
@@ -51,11 +62,27 @@
     background: wheat;
     color: crimson;
     box-shadow: 1px 1px 1px white;
+    margin-top:2rem
 }
 
 .refresh:hover{
     background-color: crimson;
     color:  white;
+}
+
+.refresh > span:hover{
+    display: inline-block;
+    animation: rotateText 2s infinite linear;
+}
+
+
+@keyframes rotateText {
+    from {
+      transform: rotate(0deg); 
+    }
+    to {
+      transform: rotate(360deg); 
+    }
 }
 
 .next-letter {
@@ -67,25 +94,150 @@
     height: 10vh;
     position: absolute;
     top:0;
-    background-color: rgb(220, 208, 243);
+    background-color: wheat;
     display: flex;
     align-items: center;
 }
 
-.nav > div{
+
+.phase1{
     height: 4rem;
     width: 4rem;
     margin-left: 2rem;
     border-radius: 50%;
-    box-shadow: 2px 2px 2px black;
+    position: absolute;
+    top:30%;
+    left:1.5rem;
+    background-color: rgb(237, 239, 109);
+    box-shadow: 5px 5px 30px rgb(245, 99, 8);
+}
+.phase1on{
+
+    background-color: wheat;
+    box-shadow: 3px 3px 30px white;
+}
+.phase1:hover{
+    opacity: 0.9;
 }
 
-.phase1{
-    background-color: rgb(46, 46, 80);
+
+.fillph1{
+    animation: fillp1 1s  linear forwards;
 }
-.phase2{
-    background-color: rgb(20, 127, 20);
+
+
+@keyframes fillp1 {
+    0% { background: linear-gradient(to right, black 0%, wheat); }
+    2% { background: linear-gradient(to right, black 2%, wheat); }
+    4% { background: linear-gradient(to right, black 4%, wheat); }
+    6% { background: linear-gradient(to right, black 6%, wheat); }
+    8% { background: linear-gradient(to right, black 8%, wheat); }
+    10% { background: linear-gradient(to right, black 10%, wheat); }
+    12% { background: linear-gradient(to right, black 12%, wheat); }
+    14% { background: linear-gradient(to right, black 14%, wheat); }
+    16% { background: linear-gradient(to right, black 16%, wheat); }
+    18% { background: linear-gradient(to right, black 18%, wheat); }
+    20% { background: linear-gradient(to right, black 20%, wheat); }
+    22% { background: linear-gradient(to right, black 22%, wheat); }
+    24% { background: linear-gradient(to right, black 24%, wheat); }
+    26% { background: linear-gradient(to right, black 26%, wheat); }
+    28% { background: linear-gradient(to right, black 28%, wheat); }
+    30% { background: linear-gradient(to right, black 30%, wheat); }
+    32% { background: linear-gradient(to right, black 32%, wheat); }
+    34% { background: linear-gradient(to right, black 34%, wheat); }
+    36% { background: linear-gradient(to right, black 36%, wheat); }
+    38% { background: linear-gradient(to right, black 38%, wheat); }
+    40% { background: linear-gradient(to right, black 40%, wheat); }
+    42% { background: linear-gradient(to right, black 42%, wheat); }
+    44% { background: linear-gradient(to right, black 44%, wheat); }
+    46% { background: linear-gradient(to right, black 46%, wheat); }
+    48% { background: linear-gradient(to right, black 48%, wheat); }
+    50% { background: linear-gradient(to right, black 50%, wheat); }
+    52% { background: linear-gradient(to right, black 52%, wheat); }
+    54% { background: linear-gradient(to right, black 54%, wheat); }
+    56% { background: linear-gradient(to right, black 56%, wheat); }
+    58% { background: linear-gradient(to right, black 58%, wheat); }
+    60% { background: linear-gradient(to right, black 60%, wheat); }
+    62% { background: linear-gradient(to right, black 62%, wheat); }
+    64% { background: linear-gradient(to right, black 64%, wheat); }
+    66% { background: linear-gradient(to right, black 66%, wheat); }
+    68% { background: linear-gradient(to right, black 68%, wheat); }
+    70% { background: linear-gradient(to right, black 70%, wheat); }
+    72% { background: linear-gradient(to right, black 72%, wheat); }
+    74% { background: linear-gradient(to right, black 74%, wheat); }
+    76% { background: linear-gradient(to right, black 76%, wheat); }
+    78% { background: linear-gradient(to right, black 78%, wheat); }
+    80% { background: linear-gradient(to right, black 80%, wheat); }
+    82% { background: linear-gradient(to right, black 82%, wheat); }
+    84% { background: linear-gradient(to right, black 84%, wheat); }
+    86% { background: linear-gradient(to right, black 86%, wheat); }
+    88% { background: linear-gradient(to right, black 88%, wheat); }
+    90% { background: linear-gradient(to right, black 90%, wheat); }
+    92% { background: linear-gradient(to right, black 92%, wheat); }
+    94% { background: linear-gradient(to right, black 94%, wheat); }
+    96% { background: linear-gradient(to right, black 96%, wheat); }
+    98% { background: linear-gradient(to right, black 98%, wheat); }
+    100% { background: linear-gradient(to right, black 100%, wheat); }
 }
-.phase3{
-    background-color: crimson;
+
+
+.stats{
+    position: absolute;
+    top:0;
+    left:0;
+    height: 100vh;
+    width: 100vw;
+    background:linear-gradient(to right,#333,black);
+    font-size:4rem;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    z-index: 100;
+    animation: moves 10s linear infinite;
 }
+
+.wpm{
+    color: wheat;
+    box-shadow: 5px 5px 5px white;
+    border:2px solid white;
+
+}
+.accuracy{
+    color: wheat;
+    box-shadow: 5px 5px 5px white;
+    border:2px solid white;
+
+}
+
+.menu{
+    position:absolute;
+    top:0;
+    left:0;
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+}
+
+.menu div{
+    font-size: 5rem;
+    color:rgb(188, 65, 90);
+    font-weight: bold;
+}
+
+.time{
+    font-size: 3rem;
+    font-weight: bold;
+    color:	#ac1e1e
+}
+
+.playAgain{
+    color:whitesmoke;
+    text-shadow: 1px 1px 1px white;
+}
+
+
+
+
