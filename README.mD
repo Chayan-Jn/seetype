@@ -1,0 +1,1 @@
+A minimalistic typing practice site inspired by monkeytype
