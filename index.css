@@ -34,10 +34,10 @@
 }
 
 .blue-text{
-    background:linear-gradient(to right,rgb(245, 245, 67),black);
+    background:linear-gradient(to right,rgb(2, 5, 81),black);
     background-clip: text;
     color:transparent;
-    text-shadow: 0.1px 0px 0.1px rgb(196, 196, 79);
+    text-shadow: 0.1px 0px 0.1px rgb(37, 5, 92) ;
 
 }
 
@@ -57,12 +57,15 @@
     opacity: 0;
 }
 .refresh{
+    padding:0 1rem;
     font-size: 3rem;
+    border-radius: 10%;
     font-weight: bolder;
     background: wheat;
     color: crimson;
     box-shadow: 1px 1px 1px white;
-    margin-top:2rem
+    margin-top:2rem;
+    border: none;
 }
 
 .refresh:hover{
@@ -94,7 +97,7 @@
     height: 10vh;
     position: absolute;
     top:0;
-    background-color: wheat;
+    background:linear-gradient(to bottom,rgb(94, 170, 221) 20%,wheat 80%,#333 20%);
     display: flex;
     align-items: center;
 }

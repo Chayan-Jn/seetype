@@ -6,6 +6,7 @@ const maxchar = 75;
 let line1 = document.querySelector('.line1');
 let line2 = document.querySelector('.line2');
 let line3 = document.querySelector('.line3');
+
 let inputField = document.querySelector('.input');
 let refreshButton = document.querySelector('.refresh');
 let whole = document.querySelector('.whole');
@@ -24,7 +25,7 @@ let acc = 0
 let TotalCorrectTextLength = 0
 let TotalTypedTextLength = 0
 
-const TYPETIME = 10
+const TYPETIME = 30
 
 function InitializeText() {
     let text1 = "", text2 = "", text3 = "";
@@ -100,6 +101,7 @@ phase1.addEventListener('click', () => {
     whole.classList.toggle('blue-whole');
     text.classList.toggle('blue-text');
     phase1.classList.toggle('phase1on');
+
 });
 
 function typingOver(){
@@ -121,12 +123,11 @@ function typingOver(){
 
 function startTypingGame() {
 
-
     let currentTime = TYPETIME;
     let currentLineIndex = 0;
     let iterator = 0; // To mark the next letter to be typed
-     TotalCorrectTextLength = 0;
-     TotalTypedTextLength = 0;
+    TotalCorrectTextLength = 0;
+    TotalTypedTextLength = 0;
 
     // Timer interval
     const timeInterval = setInterval(() => {
@@ -147,8 +148,7 @@ function startTypingGame() {
 
     // Input handler
     inputHandler = (e) => {
-        console.log("total correct",TotalCorrectTextLength)
-        console.log("total",TotalTypedTextLength)
+
         const typedText = e.target.value;
         const targetText = lines[currentLineIndex];
         let updatedText = "";
@@ -181,7 +181,7 @@ function startTypingGame() {
         // Move to the next line when current line is typed
         if (typedText.length === targetText.length) {
             iterator = 0;
-            currentLineIndex = (currentLineIndex + 1) % 3; // Rotate through the 3 lines
+            currentLineIndex = (currentLineIndex + 1) % 3; // Rotate  the 3 lines
             inputField.value = "";
 
             if (currentLineIndex === 0) {
@@ -196,7 +196,7 @@ function startTypingGame() {
         }
     };
 
-    // Blur handler to keep input field focused
+    // Blur handler to keep input field focused forever
     blurHandler = () => {
         setTimeout(() => inputField.focus(), 0);
     };
@@ -222,7 +222,7 @@ function startTypingGame() {
         currentTime = TYPETIME;
     };
 
-    // Remove any existing event listeners first
+    // Remove any existing event listeners 
     inputField.removeEventListener('input', inputHandler);
     inputField.removeEventListener('blur', blurHandler);
     document.removeEventListener('keydown', keydownHandler);
