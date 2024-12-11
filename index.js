@@ -181,7 +181,7 @@ function startTypingGame() {
         // Move to the next line when current line is typed
         if (typedText.length === targetText.length) {
             iterator = 0;
-            currentLineIndex = (currentLineIndex + 1) % 3; // Rotate  the 3 lines
+            currentLineIndex = (currentLineIndex + 1) % 2; // Rotate  the  lines
             inputField.value = "";
 
             if (currentLineIndex === 0) {
