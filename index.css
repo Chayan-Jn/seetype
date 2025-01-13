@@ -13,7 +13,7 @@
     align-items: center;
     text-align: center;
 
-    background-image: url('./public/bg3.jpg') !important;
+    background-image: url('/bg3.jpg') !important;
     background-size: cover !important;
 
 }
@@ -43,11 +43,11 @@
 }
 
 .blue-text{
-    /* background:linear-gradient(to right,rgb(2, 5, 81),black); */
+    /* background:linear-gradient(to right,rgb(2, 5, 81),black);
     background-clip: text;
-    color:transparent;
+    color:transparent; */
     text-shadow: 0.1px 0.1px 0.1px rgb(37, 5, 92) ;
-    font-weight: bold;
+    background-color: rgba(0, 0, 17, 0.797);
 
 }
 
@@ -199,7 +199,7 @@
 
     height: 100vh;
     width: 100vw;
-    background-image: url('public/stats.jpg');
+    background-image: url('/stats.jpg');
     background-size: cover;
     font-size:4rem;
     display: flex;
@@ -214,6 +214,7 @@
     width:  45vw;
     font-size: 3rem;
     border: 2px solid black;
+    font-weight: bold;
 }
 
 
