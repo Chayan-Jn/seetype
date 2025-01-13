@@ -2,7 +2,7 @@ import { uniqueWords } from "./text.js";
 
 let typing = false;
 let n = uniqueWords.length;
-const maxchar = 75; 
+const maxchar = 60; 
 let line1 = document.querySelector('.line1');
 let line2 = document.querySelector('.line2');
 let line3 = document.querySelector('.line3');
@@ -31,7 +31,7 @@ function InitializeText() {
     let text1 = "", text2 = "", text3 = "";
 
     // Generate lines of text
-    for (let i = 0; i < 13; i++) {
+    for (let i = 0; i < 10; i++) {
         let num = Math.floor(Math.random() * n);
         let w1 = uniqueWords[num] + " ";
         let w2 = uniqueWords[(num + 1) % n] + " ";
@@ -41,6 +41,10 @@ function InitializeText() {
         if ((text2.length + w2.length) < maxchar) text2 += w2;
         if ((text3.length + w3.length) < maxchar) text3 += w3;
     }
+
+    text1 = text1.trim()
+    text2 = text2.trim()
+    text3 = text3.trim()
 
     // Set line texts
     line1.innerText = text1;
@@ -68,7 +72,7 @@ if(!typing){
     menu.style.display = "flex"
 }
 
-//  event listener functions to allow removal later ig
+//  event listener functions to allow removal later 
 let inputHandler, blurHandler, keydownHandler, refreshHandler;
 
 
@@ -123,6 +127,7 @@ function typingOver(){
 
 function startTypingGame() {
 
+    
     let currentTime = TYPETIME;
     let currentLineIndex = 0;
     let iterator = 0; // To mark the next letter to be typed
@@ -159,13 +164,16 @@ function startTypingGame() {
             const typedLetter = typedText[i];
             const correctLetter = targetText[i];
 
+    
             if (i < typedText.length) {
+                
                 if (typedLetter === correctLetter) {
                     updatedText += `<span class="correct">${typedLetter}</span>`;
                 } else {
                     updatedText += `<span class="incorrect">${correctLetter}</span>`;
                 }
-            } else {
+            } 
+            else {
                 if (i == iterator) {
                     updatedText += `<span class="next-letter">${correctLetter}</span>`;
                 } else {
@@ -175,6 +183,7 @@ function startTypingGame() {
         }
         speed = Math.round( ((TotalCorrectTextLength)/5)*(60/TYPETIME))
         acc = Math.round((TotalCorrectTextLength/TotalTypedTextLength)*100)
+        acc = acc>100?100 :acc; // to make sure if a letter is being retyped again & again , make sure acc remains less than 100%
 
         lineElements[currentLineIndex].innerHTML = updatedText;
 
@@ -192,11 +201,12 @@ function startTypingGame() {
                 lineElements[1].innerHTML = lines[1];
                 lineElements[2].innerHTML = lines[2];
                 currentLineIndex = 1;
+
             }
         }
     };
 
-    // Blur handler to keep input field focused forever
+    // Blur handler to keep input field focused forever fr
     blurHandler = () => {
         setTimeout(() => inputField.focus(), 0);
     };
@@ -233,6 +243,5 @@ function startTypingGame() {
     inputField.addEventListener('blur', blurHandler);
     document.addEventListener('keydown', keydownHandler);
     refreshButton.addEventListener('click', refreshHandler);
-
 
 }
