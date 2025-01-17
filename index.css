@@ -12,7 +12,9 @@
     justify-content: center;
     align-items: center;
     text-align: center;
-
+    font-family: 'Lexend',serif;
+    font-weight: 500;
+    font-size: large;
     background-image: url('bg3.jpg') !important;
     background-size: cover !important;
 
